@@ -35,10 +35,15 @@ class ObservablePageStore {
   }
 
   getMenu() {
-    return observablePageStore.pages.filter(page => {
-      return page.menu_order > 0;
-    })
-    .sort((a, b) => a.menu_order - b.menu_order);
+    return observablePageStore.pages
+      .filter(page => {
+        return page.menu_order > 0;
+      })
+      .sort((a, b) => a.menu_order - b.menu_order)
+      .map(page  => {
+        page.link = page.link.split("https://eurika.se") [1];
+        return page;
+      });
   }
 }
 
