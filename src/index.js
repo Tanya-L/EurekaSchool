@@ -3,24 +3,16 @@ import ReactDOM from "react-dom";
 import "./assets/css/index.css";
 import "./assets/css/App.css";
 import App from "./App";
-import About from "./About";
-import Contact from "./Contact";
-import News from "./News";
-import Archive from "./Archive";
-import Notfound from "./NotFound";
 import * as serviceWorker from "./serviceWorker";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import EntryPoint from "./EntryPoint";
 
 const routing = (
   <Router>
     <div>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/news" component={News} />
-        <Route path="/archive" component={Archive} />
-        <Route component={Notfound} />
+        <Route component={EntryPoint} />
       </Switch>
     </div>
   </Router>

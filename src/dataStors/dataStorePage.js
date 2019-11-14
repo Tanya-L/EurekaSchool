@@ -14,7 +14,11 @@ class ObservablePageStore {
           .then(myJson => {
             observablePageStore.pages = [
               ...observablePageStore.pages,
-              ...myJson
+              ...myJson.map(page => {
+                page.link = page.link.split("https://eurika.se")[1];
+                return page;
+              })
+
               // .filter(({ parent }) => {
               //   return parent === 0;
               // })
@@ -39,11 +43,15 @@ class ObservablePageStore {
       .filter(page => {
         return page.menu_order > 0;
       })
-      .sort((a, b) => a.menu_order - b.menu_order)
-      .map(page  => {
-        page.link = page.link.split("https://eurika.se") [1];
-        return page;
-      });
+      .sort((a, b) => a.menu_order - b.menu_order);
+  }
+
+  getPageByPathName(pathname) {
+    const result = observablePageStore.pages.filter(page => {
+      
+      return page.link === pathname;
+    });
+    return result.length ? result[0] : null;
   }
 }
 
