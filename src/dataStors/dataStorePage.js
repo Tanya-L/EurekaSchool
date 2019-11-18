@@ -48,10 +48,14 @@ class ObservablePageStore {
 
   getPageByPathName(pathname) {
     const result = observablePageStore.pages.filter(page => {
-      
       return page.link === pathname;
     });
     return result.length ? result[0] : null;
+  }
+
+  getPageChildrenById(id) {
+    return observablePageStore.pages.filter(page => 
+      page.parent == id);
   }
 }
 

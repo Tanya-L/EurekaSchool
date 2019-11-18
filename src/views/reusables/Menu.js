@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import "./assets/css/App.css";
-import { observablePageStore } from "./dataStors/dataStorePage";
+import { observablePageStore } from "../../dataStors/dataStorePage";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 
